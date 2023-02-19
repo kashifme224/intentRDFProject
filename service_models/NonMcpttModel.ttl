@@ -1,0 +1,78 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix kpi: <http://www.sdo3.org/KPI/Version2/> .
+@prefix met: <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+@prefix nonmcptt: <http://www.operator.com/Service/NONMCPTT/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nonmcptt:BufferedVideo icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-6"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "300 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "60"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "6"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+nonmcptt:ConvVideo icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-3"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "150 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "40"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "2"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+nonmcptt:ConvVoice icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-2"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "100 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "20"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "1"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+nonmcptt:ImsSignaling icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-6"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "100 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "10"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "5"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+nonmcptt:LiveVideo icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-3"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "100 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "70"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "7"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+nonmcptt:NonMcpttUpVoice icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-2"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "100 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "20"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "66"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+nonmcptt:ProcessMonitor icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "10e-3"^^xsd:string ] ] ;
+    icm:atMost [ icm:valueBy [ kpi:latency "50 ms"^^xsd:string ] ] ;
+    icm:exactly [ icm:valueBy [ met:priority "30"^^xsd:int ] ],
+        [ icm:valueBy [ met:qi5G "3"^^xsd:int ] ] ;
+    icm:hasParameter met:priority,
+        met:qi5G,
+        kpi:latency,
+        kpi:packeterrorrate .
+
+met:priority rdfs:subClassOf icm:PropertyParameter .
+
+met:qi5G rdfs:subClassOf icm:PropertyParameter .
+
+kpi:latency rdfs:subClassOf icm:PropertyParameter .
+
+kpi:packeterrorrate rdfs:subClassOf icm:PropertyParameter .
+

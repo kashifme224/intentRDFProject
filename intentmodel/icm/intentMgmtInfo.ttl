@@ -1,0 +1,24 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix imo: <http://tio.models.tmforum.org/tio/v1.0.0/IntentManagementOntology/> .
+@prefix ns1: <http://www.w3.org/2006/time#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+icm:Intent icm:hasInformation icm:IntentInformation .
+
+icm:IntentReport icm:hasInformation icm:ReportInformation .
+
+icm:IntentInformation icm:owner imo:Owner ;
+    rdfs:subClassOf icm:IntentManagementInformation .
+
+icm:ReportInformation icm:currentIntentHandlingState imo:IntentHandlingState ;
+    icm:currentIntentUpdateState imo:IntentUpdateState ;
+    icm:handler imo:Handler ;
+    icm:rejectedBecause imo:RejectionReason ;
+    icm:reportNumber xsd:positiveInteger ;
+    rdfs:subClassOf icm:IntentManagementInformation .
+
+icm:IntentManagementInformation icm:generated ns1:Instant ;
+    icm:procedure imo:IntentManagementProcedure ;
+    rdfs:subClassOf icm:Information .
+

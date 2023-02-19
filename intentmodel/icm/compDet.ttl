@@ -1,0 +1,10 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+
+icm:ComplainceDetail a icm:event,
+        icm:metric,
+        icm:receiver,
+        icm:targetDescription,
+        icm:targetType,
+        icm:value,
+        icm:valueBy .
+

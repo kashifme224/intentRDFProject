@@ -1,0 +1,34 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix nonmcptt: <http://www.operator.com/Service/MCPTT/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resource: <http://www.operator.com/Resource/> .
+@prefix service: <http://www.operator.com/Service/> .
+
+nonmcptt:BufferedVideo a icm:Target ;
+    rdfs:subClassOf service:NonMcpttNGBRService .
+
+nonmcptt:ConvVideo a icm:Target ;
+    rdfs:subClassOf service:NonMcpttGBRService .
+
+nonmcptt:ConvVoice a icm:Target ;
+    rdfs:subClassOf service:NonMcpttGBRService .
+
+nonmcptt:ImsSignaling a icm:Target ;
+    rdfs:subClassOf service:NonMcpttNGBRService .
+
+nonmcptt:LiveVideo a icm:Target ;
+    rdfs:subClassOf service:NonMcpttNGBRService .
+
+nonmcptt:NonMcpttUpVoice a icm:Target ;
+    rdfs:subClassOf service:McpttGBRService .
+
+nonmcptt:ProcessMonitor a icm:Target ;
+    rdfs:subClassOf service:NonMcpttGBRService .
+
+service:NonMcpttGBRService rdfs:subClassOf icm:Target .
+
+service:NonMcpttNGBRService rdfs:subClassOf icm:Target .
+
+icm:Target icm:targetResource resource:GBR,
+        resource:NGBR .
+

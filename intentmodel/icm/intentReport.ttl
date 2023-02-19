@@ -1,0 +1,21 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+icm:IntentReport icm:hasExpectationReport icm:ExpectationReport .
+
+icm:ExpectationReport icm:compliant icm:Parameter ;
+    icm:degraded icm:Parameter ;
+    icm:hasTarget icm:Target ;
+    icm:observed icm:Parameter ;
+    icm:unknown icm:Parameter .
+
+icm:Parameter icm:event icm:IntentHandlingEvent ;
+    icm:metric rdfs:Resource ;
+    icm:reason icm:EvaluationReason ;
+    icm:receiver rdfs:Resource ;
+    icm:targetDescription rdfs:Resource ;
+    icm:targetType rdfs:Class ;
+    icm:value rdf:PlainLiteral ;
+    icm:valueBy rdfs:Resource .
+

@@ -1,0 +1,17 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix ns1: <http://www.w3.org/2006/time#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+icm:IntentHandlingEvent icm:hasContext icm:ReportingTimeContext .
+
+icm:Parameter icm:hasContext icm:UnitContext ;
+    icm:hasUnit icm:UnitContext .
+
+icm:ReportingTimeContext icm:hasDuration ns1:Duration ;
+    icm:timeLeft ns1:Duration ;
+    rdfs:subClassOf icm:Context .
+
+icm:UnitContext icm:unit xsd:string ;
+    rdfs:subClassOf icm:Context .
+

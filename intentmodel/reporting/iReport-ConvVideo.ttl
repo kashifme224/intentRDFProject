@@ -1,0 +1,65 @@
+@prefix catalog: <http://www.operator.com/Catalog/> .
+@prefix exI: <http://www.operator.org/IntentNamespace/intent20220322_12345/> .
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix inv: <http://www.operator.org/Inventory/> .
+@prefix kpi: <http://www.sdo3.org/KPI/Version2/> .
+@prefix rep: <http://www.operator.org/IntentNamespace/intent20220322_12345/Reports/> .
+@prefix t: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rep:IntentReport123 a icm:IntentReport ;
+    icm:hasExpectationReport rep:ER1_ServiceDelivery,
+        rep:ER2_ServiceProperty,
+        rep:ER3_Reporting ;
+    icm:reportsAbout exI:ExampleIntentXYZ .
+
+rep:T1_service icm:targetResource inv:service01 .
+
+rep:ER1_ServiceDelivery a icm:ExpectationReport ;
+    icm:compliant [ a icm:DeliveryParameter ;
+            icm:reason icm:ReasonMatchingTargetDescription ;
+            icm:reportsAbout exI:Par1_description ;
+            icm:targetDescription catalog:ExampleService ] ;
+    icm:hasTarget catalog:ExampleService ;
+    icm:reportsAbout exI:Exp1_delivery .
+
+rep:ER2_ServiceProperty a icm:ExpectationReport ;
+    icm:compliant [ a icm:PropertyParameter ;
+            icm:reason icm:ReasonMeetsRequirement ;
+            icm:reportsAbout exI:Par3_per ;
+            icm:valueBy [ kpi:packeterrorrate "0"^^xsd:string ] ] ;
+    icm:degraded [ a icm:PropertyParameter ;
+            icm:reason icm:ReasonNotCompliant ;
+            icm:reportsAbout exI:Par2_latency ;
+            icm:valueBy [ kpi:latency "493.10977249999996 ms"^^xsd:string ] ] ;
+    icm:hasTarget catalog:ExampleService ;
+    icm:reportsAbout exI:Exp1_property .
+
+rep:ER3_Reporting a icm:ExpectationReport ;
+    icm:compliant [ a icm:ReportingParameter ;
+            icm:event icm:ReportingIntervalExpired ;
+            icm:hasContext [ a icm:ReportingTimeContext ;
+                    icm:reportingIntervalLeft [ a t:Duration ;
+                            t:numericDuration 10 ;
+                            t:temporalUnit t:unitMinute ] ] ;
+            icm:reason icm:ReasonReportCreated ;
+            icm:reportsAbout exI:Par7 ] ;
+    icm:hasTarget rep:T2_intent ;
+    icm:reportsAbout exI:Exp3_reporting ;
+    icm:unknown [ a icm:ReportingParameter ;
+            icm:event icm:HandlingEnded,
+                icm:IntentRejected,
+                icm:StateComplies,
+                icm:StateDegrades,
+                icm:UpdateFinished,
+                icm:UpdateRejected ;
+            icm:reason icm:ReasonIrrelevantAlternative ;
+            icm:reportsAbout exI:Par10,
+                exI:Par11,
+                exI:Par12,
+                exI:Par13,
+                exI:Par8,
+                exI:Par9 ] .
+
+rep:T2_intent icm:targetResource exI:ExampleIntentXYZ .
+

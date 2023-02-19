@@ -1,0 +1,14 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+
+icm:ComplainceQualifier a icm:allOf,
+        icm:anyOf,
+        icm:atLeast,
+        icm:atMost,
+        icm:exactly,
+        icm:greater,
+        icm:hasExpectation,
+        icm:hasParameter,
+        icm:noneOf,
+        icm:oneOf,
+        icm:smaller .
+

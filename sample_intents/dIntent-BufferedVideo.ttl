@@ -1,0 +1,73 @@
+@prefix cat: <http://www.operator.com/Catalog/> .
+@prefix exI: <http://www.operator.org/IntentNamespace/intent20220322_12345/> .
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix imo: <http://tio.models.tmforum.org/tio/v1.0.0/IntentManagementOntology/> .
+@prefix kpi: <http://www.sdo3.org/KPI/Version2/> .
+@prefix met: <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+@prefix t: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+exI:ExampleIntentXYZ a icm:Intent ;
+    icm:hasExpectation exI:Exp1_delivery,
+        exI:Exp2_property,
+        exI:Exp3_reporting .
+
+exI:Par6_reporting a icm:ReportingParameter .
+
+exI:Par7 a icm:ReportingParameter ;
+    icm:event icm:ReportingIntervalExpired ;
+    icm:hasContext [ a icm:ReportingTimeContext ;
+            icm:reportingInterval [ a t:Duration ;
+                    t:numericDuration 10 ;
+                    t:temporalUnit t:unitMinute ] ] .
+
+exI:Exp1_delivery a icm:DeliveryExpectation ;
+    icm:hasParameter exI:Par1_description ;
+    icm:hasTarget exI:ServiceTarget1 .
+
+exI:Exp2_property a icm:PropertyExpectation ;
+    icm:hasParameter exI:Par2_latency,
+        exI:Par3_per,
+        exI:Par4_priority,
+        exI:Par5_qi5G ;
+    icm:hasTarget exI:ServiceTarget1 .
+
+exI:Exp3_reporting a icm:ReportingExpectation ;
+    icm:anyOf exI:Par10,
+        exI:Par11,
+        exI:Par12,
+        exI:Par13,
+        exI:Par8,
+        exI:Par9 ;
+    icm:hasTarget icm:ReportingTarget1 ;
+    icm:receiver icm:IntentManagerXYZ .
+
+exI:Par10 icm:event imo:StateDegrades .
+
+exI:Par11 icm:event imo:HandlingEnded .
+
+exI:Par12 icm:event imo:UpdateRejected .
+
+exI:Par13 icm:event imo:UpdateFinished .
+
+exI:Par1_description a icm:DeliveryParameter ;
+    icm:targetDescription cat:ExampleService .
+
+exI:Par2_latency a icm:PropertyParameter ;
+    icm:atMost [ icm:valueBy [ kpi:latency "10e-6"^^xsd:string ] ] .
+
+exI:Par3_per a icm:PropertyParameter ;
+    icm:atLeast [ icm:valueBy [ kpi:packeterrorrate "300 ms"^^xsd:string ] ] .
+
+exI:Par4_priority a icm:PropertyParameter ;
+    icm:exactly [ icm:valueBy [ met:priority 60 ] ] .
+
+exI:Par5_qi5G a icm:PropertyParameter ;
+    icm:exactly [ icm:valueBy [ met:qi5G 6 ] ] .
+
+exI:Par8 icm:event imo:IntentRejected .
+
+exI:Par9 icm:event imo:StateComplies .
+
+exI:ServiceTarget1 a icm:Intent .
+

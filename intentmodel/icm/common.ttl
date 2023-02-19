@@ -1,0 +1,239 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#icm:targetResourcehttp://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/
+<http://www.co-ode.org/ontologies/ont.owl#icm:targetResourcehttp://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> rdf:type owl:ObjectProperty ;
+                                                                                                                         rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/DeliveryExpectation
+icm:DeliveryExpectation rdf:type owl:Class ;
+                        rdfs:subClassOf icm:Expectation .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/DeliveryParameter
+icm:DeliveryParameter rdf:type owl:Class ;
+                      rdfs:subClassOf icm:Parameter .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/Element
+icm:Element rdf:type owl:Class .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/Expectation
+icm:Expectation rdf:type owl:Class ;
+                rdfs:subClassOf icm:RequirementDefiner .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/ExpectationReport
+icm:ExpectationReport rdf:type owl:Class ;
+                      rdfs:subClassOf icm:RequirementReporter .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/Information
+icm:Information rdf:type owl:Class ;
+                rdfs:subClassOf icm:InformationElement .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/InformationElement
+icm:InformationElement rdf:type owl:Class ;
+                       rdfs:subClassOf icm:Element .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/IntentInformation
+icm:IntentInformation rdf:type owl:Class ;
+                      rdfs:subClassOf icm:IntentManagementInformation .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/IntentManagementInformation
+icm:IntentManagementInformation rdf:type owl:Class ;
+                                rdfs:subClassOf icm:Information .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/Parameter
+icm:Parameter rdf:type owl:Class ;
+              rdfs:subClassOf icm:RequirementDefiner ,
+                              icm:RequirementReporter .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/PropertyExpectation
+icm:PropertyExpectation rdf:type owl:Class ;
+                        rdfs:subClassOf icm:Expectation .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/PropertyParameter
+icm:PropertyParameter rdf:type owl:Class ;
+                      rdfs:subClassOf icm:Parameter .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/ReportInformation
+icm:ReportInformation rdf:type owl:Class ;
+                      rdfs:subClassOf icm:IntentManagementInformation .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/ReportingExpectation
+icm:ReportingExpectation rdf:type owl:Class ;
+                         rdfs:subClassOf icm:Expectation .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/ReportingParameter
+icm:ReportingParameter rdf:type owl:Class ;
+                       rdfs:subClassOf icm:Parameter .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/RequirementDefiner
+icm:RequirementDefiner rdf:type owl:Class ;
+                       rdfs:subClassOf icm:RequirementElement .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/RequirementElement
+icm:RequirementElement rdf:type owl:Class ;
+                       rdfs:subClassOf icm:Element .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/RequirementReporter
+icm:RequirementReporter rdf:type owl:Class ;
+                        rdfs:subClassOf icm:RequirementElement .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/Target
+icm:Target rdf:type owl:Class ;
+           rdfs:subClassOf icm:RequirementElement .
+
+
+###  http://www.operator.com/Resource/GBR
+<http://www.operator.com/Resource/GBR> rdf:type owl:Class ;
+                                       rdfs:subClassOf icm:Target .
+
+
+###  http://www.operator.com/Resource/McpttGBRService
+<http://www.operator.com/Resource/McpttGBRService> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://www.operator.com/Resource/GBR> .
+
+
+###  http://www.operator.com/Resource/McpttNGBRService
+<http://www.operator.com/Resource/McpttNGBRService> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://www.operator.com/Resource/NGBR> .
+
+
+###  http://www.operator.com/Resource/NGBR
+<http://www.operator.com/Resource/NGBR> rdf:type owl:Class ;
+                                        rdfs:subClassOf icm:Target .
+
+
+###  http://www.operator.com/Resource/NonMcpttGBRService
+<http://www.operator.com/Resource/NonMcpttGBRService> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://www.operator.com/Resource/GBR> .
+
+
+###  http://www.operator.com/Resource/NonMcpttNGBRService
+<http://www.operator.com/Resource/NonMcpttNGBRService> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://www.operator.com/Resource/NGBR> .
+
+
+###  http://www.operator.com/Service/MCPTT/McpttData
+<http://www.operator.com/Service/MCPTT/McpttData> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.operator.com/Resource/McpttNGBRService> .
+
+
+###  http://www.operator.com/Service/MCPTT/McpttSignaling
+<http://www.operator.com/Service/MCPTT/McpttSignaling> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://www.operator.com/Resource/McpttNGBRService> .
+
+
+###  http://www.operator.com/Service/MCPTT/McpttUlVideo
+<http://www.operator.com/Service/MCPTT/McpttUlVideo> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://www.operator.com/Resource/McpttGBRService> .
+
+
+###  http://www.operator.com/Service/MCPTT/McpttUlVoice
+<http://www.operator.com/Service/MCPTT/McpttUlVoice> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://www.operator.com/Resource/McpttGBRService> .
+
+
+###  http://www.operator.com/Service/MCPTT/McpttVoice
+<http://www.operator.com/Service/MCPTT/McpttVoice> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://www.operator.com/Resource/McpttGBRService> .
+
+
+###  http://www.operator.com/Service/NonMCPTT/BufferedVideo
+<http://www.operator.com/Service/NonMCPTT/BufferedVideo> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://www.operator.com/Resource/NonMcpttNGBRService> .
+
+
+###  http://www.operator.com/Service/NonMCPTT/ConvVideo
+<http://www.operator.com/Service/NonMCPTT/ConvVideo> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://www.operator.com/Resource/NonMcpttGBRService> .
+
+
+###  http://www.operator.com/Service/NonMCPTT/ConvVoice
+<http://www.operator.com/Service/NonMCPTT/ConvVoice> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://www.operator.com/Resource/NonMcpttGBRService> .
+
+
+###  http://www.operator.com/Service/NonMCPTT/ImsSignaling
+<http://www.operator.com/Service/NonMCPTT/ImsSignaling> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://www.operator.com/Resource/NonMcpttNGBRService> .
+
+
+###  http://www.operator.com/Service/NonMCPTT/LiveVideo
+<http://www.operator.com/Service/NonMCPTT/LiveVideo> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://www.operator.com/Resource/NonMcpttNGBRService> .
+
+
+###  http://www.operator.com/Service/NonMCPTT/ProcessMonitor
+<http://www.operator.com/Service/NonMCPTT/ProcessMonitor> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.operator.com/Resource/NonMcpttGBRService> .
+
+
+###  http://www.sdo2.org/TelecomMetrics/Version_1.0/priority
+<http://www.sdo2.org/TelecomMetrics/Version_1.0/priority> rdf:type owl:Class ;
+                                                          rdfs:subClassOf icm:PropertyParameter .
+
+
+###  http://www.sdo2.org/TelecomMetrics/Version_1.0/qi5G
+<http://www.sdo2.org/TelecomMetrics/Version_1.0/qi5G> rdf:type owl:Class ;
+                                                      rdfs:subClassOf icm:PropertyParameter .
+
+
+###  http://www.sdo3.org/KPI/Version2/latency
+<http://www.sdo3.org/KPI/Version2/latency> rdf:type owl:Class ;
+                                           rdfs:subClassOf icm:PropertyParameter .
+
+
+###  http://www.sdo3.org/KPI/Version2/packeterrorrate
+<http://www.sdo3.org/KPI/Version2/packeterrorrate> rdf:type owl:Class ;
+                                                   rdfs:subClassOf icm:PropertyParameter .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/Intent
+icm:Intent rdf:type owl:NamedIndividual ,
+                    icm:RequirementDefiner .
+
+
+###  http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/IntentReport
+icm:IntentReport rdf:type owl:NamedIndividual ,
+                          icm:RequirementReporter .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

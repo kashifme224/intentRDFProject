@@ -1,0 +1,48 @@
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix imo: <http://tio.models.tmforum.org/tio/v1.0.0/IntentManagementOntology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+icm:Intent icm:hasExpectation icm:DeliveryExpectation,
+        icm:Expectation,
+        icm:PropertyExpectation,
+        icm:ReportingExpectation .
+
+icm:DeliveryExpectation icm:hasParameter icm:DeliveryParameter ;
+    icm:hasTarget icm:Target .
+
+icm:DeliveryParameter icm:targetDescription rdfs:Resource ;
+    icm:targetType rdfs:Class .
+
+icm:Expectation icm:allOf icm:ParameterCollection ;
+    icm:anyOf icm:ParameterCollection ;
+    icm:atLeast icm:Parameter ;
+    icm:atMost icm:Parameter ;
+    icm:exactly icm:Parameter ;
+    icm:greater icm:Parameter ;
+    icm:hasParameter icm:Parameter ;
+    icm:hasTarget icm:Target ;
+    icm:noneOf icm:ParameterCollection ;
+    icm:oneOf icm:ParameterCollection ;
+    icm:smaller icm:Parameter .
+
+icm:PropertyExpectation icm:hasParameter icm:PropertyParameter ;
+    icm:hasTarget icm:Target .
+
+icm:PropertyParameter icm:metric rdfs:Resource ;
+    icm:value rdf:PlainLiteral ;
+    icm:valueBy rdfs:Resource .
+
+icm:ReportingExpectation icm:hasParameter icm:ReportingParam ;
+    icm:hasTarget icm:Target .
+
+icm:ReportingParam icm:event imo:IntentHandlingEvent ;
+    icm:receiver rdfs:Resource .
+
+icm:Target icm:targetResource rdfs:Resource .
+
+icm:Parameter icm:allOf icm:ParameterCollection ;
+    icm:anyOf icm:ParameterCollection ;
+    icm:noneOf icm:ParameterCollection ;
+    icm:oneOf icm:ParameterCollection .
+

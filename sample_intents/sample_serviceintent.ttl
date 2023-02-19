@@ -1,0 +1,24 @@
+@prefix cat: <http://www.operator.com/Catalog/> .
+@prefix exI: <http://www.operator.org/IntentNamespace/intent20220322_12345/> .
+@prefix icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+
+exI:ExampleIntentXYZ a icm:Intent ;
+    icm:hasExpectation exI:Exp1_delivery,
+        exI:Exp2_property .
+
+exI:Exp1_delivery a icm:DeliveryExpectation ;
+    icm:hasParameter exI:Par1_description ;
+    icm:hasTarget exI:ServiceTarget1 .
+
+exI:Exp2_property a icm:PropertyExpectation ;
+    icm:hasParameter exI:Par2_latency,
+        exI:Par3_per,
+        exI:Par4_priority,
+        exI:Par5_qi5G ;
+    icm:hasTarget exI:ServiceTarget1 .
+
+exI:Par1_description a icm:DeliveryParameter ;
+    icm:targetDescription cat:ExampleService .
+
+exI:ServiceTarget1 a icm:Intent .
+
