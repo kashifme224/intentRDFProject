@@ -1,0 +1,55 @@
+    PREFIX mcptt: <http://www.operator.com/Service/MCPTT/>
+    PREFIX icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/>
+
+    SELECT ?perVal ?latVal ?qiprVal WHERE {
+    {
+        SELECT ?perVal
+        WHERE { mcptt:McpttData icm:atLeast _:bp1 .
+            _:bp1 icm:valueBy _:bp2 .
+            _:bp2 ?ref1 ?perVal } }
+    UNION
+    {   SELECT ?latVal
+        WHERE { mcptt:McpttData icm:atMost _:bl1 .
+            _:bl1 icm:valueBy _:bl2 .
+            _:bl2 ?ref2 ?latVal } }
+    UNION
+    {   SELECT ?qiprVal
+        WHERE { mcptt:McpttData icm:exactly _:bq1 .
+            _:bq1 icm:valueBy _:bq2 .
+            _:bq2 ?ref3 ?qiprVal }
+    } }
+
+
+    PREFIX icm: <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/>
+    PREFIX intentNS: <http://www.operator.org/IntentNamespace/intent20220322_12345/>
+
+    SELECT ?perVal ?latVal ?priorityVal ?qiprVal  WHERE {
+    {
+        SELECT ?perVal
+        WHERE { intentNS:Par3_per icm:atLeast _:bp1 .
+            _:bp1 icm:valueBy _:bp2 .
+            _:bp2 ?ref1 ?perVal } }
+    UNION
+    {   SELECT ?latVal
+        WHERE { intentNS:Par2_latency icm:atMost _:bl1 .
+            _:bl1 icm:valueBy _:bl2 .
+            _:bl2 ?ref2 ?latVal } }
+    UNION
+    {   SELECT ?priorityVal
+        WHERE { intentNS:Par4_priority  icm:exactly _:bpr1 .
+            _:bpr1 icm:valueBy _:bpr2 .
+            _:bpr2 ?ref4 ?priorityVal } }
+    UNION
+    {   SELECT ?qiprVal
+        WHERE { intentNS:Par5_qi5G  icm:exactly _:bq1 .
+            _:bq1 icm:valueBy _:bq2 .
+            _:bq2 ?ref3 ?qiprVal } }
+    }
+
+
+    SELECT ?parameter ?value
+    WHERE
+    {
+       ?service ?property [ icm:valueBy [ ?parameter ?value ] ] .
+       FILTER (?parameter = param && ?service = serv)
+    }
